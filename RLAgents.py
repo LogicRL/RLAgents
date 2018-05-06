@@ -347,7 +347,7 @@ class DQN_Agent():
 	"""
 
 	def __init__(self, state_dim, action_cnt, env_name, mini_task, epsilon_start=1., epsilon_end=0.1, 
-				 epsilon_linear_red=0.0001, replay=False, gamma=0.99, train=True, save_every_step=1000, debug=False):
+				 epsilon_linear_red=0.0001, replay=False, gamma=0.99, train=True, save_every_step=100, debug=False):
 		"""
 		Initialize a DQN agent.
 
@@ -381,8 +381,8 @@ class DQN_Agent():
 		# initialize the replay memory
 		self.replay_memory = None
 		if self.replay:
-			self.memory_size = 3000
-			self.burn_in = 1000
+			self.memory_size = 2000
+			self.burn_in = 500
 			self.replay_memory = Replay_Memory(self.env_name, self.mini_task, self.memory_size, self.burn_in)
 
 		# initialize the Q-network and load weights if exist
